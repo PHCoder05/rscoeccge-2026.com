@@ -1,0 +1,1733 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CCGE-2026 | International Conference</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --primary: #8b0000;
+        --primary-dark: #660000;
+        --primary-light: #b30000;
+        --secondary: #8b0000;
+        /* Switched from Blue to Maroon */
+        --secondary-dark: #660000;
+        --secondary-light: #b30000;
+        --accent: #d58e58;
+        /* JSPM Gold/Orange */
+        --white: #ffffff;
+        --gray-100: #f8f9fa;
+        --gray-200: #e9ecef;
+        --gray-300: #dee2e6;
+        --gray-400: #ced4da;
+        --gray-800: #343a40;
+        --black: #000000;
+        --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Add custom scrollbar */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--gray-100);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 5px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: var(--primary-dark);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      html,
+      body {
+        height: 100%;
+        min-height: 100vh;
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+
+      body {
+        background-color: var(--white);
+        color: var(--gray-800);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-size: 16px;
+      }
+
+      section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 0;
+        overflow: hidden;
+      }
+
+      header {
+        background-color: var(--white);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-top {
+        padding: 1rem 0;
+        border-bottom: 2px solid var(--primary);
+        background-color: var(--white);
+      }
+
+      .header-logos {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .logo-group-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: opacity 0.3s ease;
+      }
+
+      .logo-group-link:hover {
+        opacity: 0.9;
+      }
+
+      .header-logo {
+        height: 60px;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .header-logo.ieee {
+        height: 50px;
+      }
+
+      .conf-title {
+        text-align: center;
+        flex: 1;
+      }
+
+      .conf-title h1 {
+        font-size: 1.2rem;
+        color: var(--primary);
+        font-weight: 700;
+        margin: 0;
+        line-height: 1.4;
+        width: 100%;
+      }
+
+      .header-bottom {
+        background-color: var(--primary);
+        padding: 0;
+      }
+
+      /* Mobile menu button */
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--white);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+        z-index: 1001;
+        transition: all 0.3s ease;
+      }
+
+      .menu-btn:hover {
+        color: var(--accent);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1300px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        width: 100%;
+      }
+
+      .nav-links li {
+        flex: 1;
+      }
+
+      .nav-links a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.85rem;
+        transition: all 0.3s;
+        display: block;
+        padding: 1rem 0.5rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links li:first-child a {
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links a:hover,
+      .nav-links a.active {
+        background-color: var(--accent);
+        color: var(--white);
+      }
+
+      /* Spotlight Marquee */
+      .spotlight {
+        background: var(--white);
+        color: var(--gray-800);
+        padding: 8px 0;
+        margin-top: 160px;
+        /* Adjust based on header height */
+        border-bottom: 1px solid var(--gray-200);
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        position: relative;
+        z-index: 900;
+      }
+
+      .spotlight-label {
+        color: var(--primary);
+        font-weight: 800;
+        padding-right: 15px;
+        text-transform: uppercase;
+        white-space: nowrap;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 2;
+        background: var(--white);
+        padding-left: 5%;
+      }
+
+      .spotlight-ticker {
+        flex-grow: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+      }
+
+      .ticker-content {
+        display: inline-block;
+        padding-left: 100%;
+        animation: ticker 40s linear infinite;
+        font-weight: 600;
+        color: var(--primary);
+        /* Brand Maroon for announcements */
+      }
+
+      @keyframes ticker {
+        0% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        100% {
+          transform: translate3d(-100%, 0, 0);
+        }
+      }
+
+      .hero {
+        min-height: calc(100vh - 180px);
+        height: auto;
+        display: flex;
+        align-items: center;
+        background: url("image.png");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: var(--white);
+        text-align: center;
+        position: relative;
+        padding: 60px 0;
+        overflow: hidden;
+      }
+
+      /* Overlay removed to keep image visible as requested */
+      .hero::after {
+        display: none;
+      }
+
+      .hero-content {
+        max-width: 1000px;
+        width: 90%;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        position: relative;
+        z-index: 1;
+        animation: fadeIn 1s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        background-color: transparent;
+        /* Black background removed */
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        /* Added for readability on raw image */
+        border-radius: 4px;
+        border: none;
+        box-shadow: none;
+        /* Shadow removed */
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+        font-weight: 700;
+        animation: fadeInDown 1s ease;
+        color: var(--white);
+        text-transform: none;
+      }
+
+      .hero h2 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        margin: 0.5rem 0 1rem;
+        color: var(--accent);
+        /* Brand Gold */
+        font-weight: 800;
+        animation: fadeInUp 1s ease 0.3s;
+        animation-fill-mode: both;
+        letter-spacing: 2px;
+      }
+
+      .hero p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        margin-bottom: 0.5rem;
+        opacity: 1;
+        animation: fadeIn 1s ease 0.6s;
+        animation-fill-mode: both;
+        color: var(--white);
+      }
+
+      .hero .dates {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        font-weight: 600;
+        margin: 1.5rem 0;
+        color: var(--white);
+        animation: fadeIn 1s ease 0.9s;
+        animation-fill-mode: both;
+        letter-spacing: 1px;
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        animation: fadeInUp 1s ease 1.2s;
+        animation-fill-mode: both;
+      }
+
+      .brochure-section {
+        padding: 4rem 0;
+        background: linear-gradient(
+          180deg,
+          rgba(139, 0, 0, 0.04),
+          rgba(255, 255, 255, 0.96)
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .brochure-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(213, 142, 88, 0.16),
+          transparent 38%
+        );
+        pointer-events: none;
+      }
+
+      .brochure-grid {
+        display: grid;
+        grid-template-columns: minmax(280px, 0.95fr) minmax(280px, 1.05fr);
+        gap: 2.5rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .brochure-copy {
+        padding: 1rem 0;
+      }
+
+      .brochure-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--primary);
+        color: var(--white);
+        padding: 0.45rem 1rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-bottom: 1rem;
+      }
+
+      .brochure-copy h2 {
+        color: var(--primary);
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.15;
+        margin-bottom: 1rem;
+      }
+
+      .brochure-copy p {
+        font-size: clamp(1rem, 2vw, 1.15rem);
+        line-height: 1.8;
+        color: var(--gray-800);
+        max-width: 560px;
+        margin-bottom: 1.5rem;
+      }
+
+      .brochure-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .brochure-card {
+        background: var(--white);
+        border-radius: 24px;
+        box-shadow: var(--box-shadow-hover);
+        padding: 1rem;
+        transform: rotate(-1deg);
+        border: 1px solid rgba(139, 0, 0, 0.1);
+      }
+
+      .brochure-card img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+      }
+
+      .brochure-card .caption {
+        margin-top: 0.9rem;
+        color: var(--gray-800);
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .brochure-section .btn-outline {
+        background-color: transparent;
+        color: var(--primary);
+        border-color: var(--primary);
+      }
+
+      .brochure-section .btn-outline:hover {
+        background-color: var(--primary);
+        color: var(--white);
+      }
+
+      @media (max-width: 900px) {
+        .brochure-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .brochure-card {
+          max-width: 620px;
+          margin: 0 auto;
+        }
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: var(--white);
+        padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 3rem);
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--primary);
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background-color: var(--white);
+        transition: width 0.3s ease;
+        z-index: -1;
+      }
+
+      .btn:hover::before {
+        width: 100%;
+      }
+
+      .btn:hover {
+        color: var(--primary);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--white);
+        border: 2px solid var(--white);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        color: var(--white);
+      }
+
+      /* Mobile menu styles */
+      @media (max-width: 768px) {
+        .menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 80%;
+          height: 100vh;
+          background: var(--primary);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 2rem;
+          transition: 0.3s ease;
+          z-index: 999;
+          box-shadow: -5px 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .nav-links li {
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeInNavLinks 0.5s forwards;
+          animation-delay: calc(0.1s * var(--i, 0));
+        }
+
+        @keyframes fadeInNavLinks {
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .nav-links a {
+          font-size: 1.3rem;
+          display: block;
+          padding: 0.5rem 1rem;
+        }
+
+        .hero {
+          padding: 100px 0 40px;
+        }
+
+        .hero-content {
+          padding: 1rem;
+          gap: 1rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(1.8rem, 4vw, 2.5rem);
+        }
+
+        .hero h2 {
+          font-size: clamp(2rem, 6vw, 3.5rem);
+          margin: 0.5rem 0 1rem;
+        }
+
+        .hero p {
+          font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+
+        .hero .dates {
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
+          padding: 0.4rem 1.5rem;
+          margin: 1rem 0;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 0 1rem;
+          margin-top: 1.5rem;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          padding: 80px 0 30px;
+        }
+
+        .hero-content {
+          padding: 0.8rem;
+        }
+
+        .hero h1 {
+          font-size: clamp(1.5rem, 3.5vw, 2rem);
+        }
+
+        .hero h2 {
+          font-size: clamp(1.8rem, 5vw, 2.5rem);
+        }
+
+        .hero p {
+          font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+        }
+      }
+
+      /* Add smooth reveal animation for sections */
+      .reveal {
+        position: relative;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Sponsors section */
+      .sponsors {
+        min-height: 50vh;
+        text-align: center;
+        padding: 4rem 0;
+        background-color: var(--white);
+        position: relative;
+      }
+
+      .sponsors::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          circle at 20% 30%,
+          rgba(139, 0, 0, 0.03) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .sponsor-logos {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+        padding: 2rem;
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .sponsor-logo {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        filter: grayscale(0%);
+        opacity: 1;
+        transition: all 0.5s ease;
+        transform: scale(1);
+        padding: 1.5rem;
+      }
+
+      .sponsor-logo:hover {
+        transform: scale(1.02);
+        box-shadow: var(--box-shadow-hover);
+      }
+
+      @media (max-width: 768px) {
+        .sponsor-logos {
+          padding: 1.5rem;
+        }
+
+        .sponsor-logo {
+          max-width: 250px;
+          padding: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .sponsor-logos {
+          padding: 1rem;
+        }
+
+        .sponsor-logo {
+          max-width: 200px;
+          padding: 0.5rem;
+        }
+      }
+
+      /* About section */
+      .about {
+        min-height: 60vh;
+        padding: 4rem 0;
+        background-color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .about::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          var(--gray-100) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: var(--primary);
+        position: relative;
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        font-weight: 700;
+        z-index: 1;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -15px;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 2px;
+      }
+
+      .about p {
+        max-width: 900px;
+        margin: 0 auto;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        line-height: 1.8;
+        color: var(--gray-800);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        padding: 0 1.5rem;
+      }
+
+      /* Scope section */
+      .scope {
+        padding: 4rem 0;
+        background-color: var(--white);
+        position: relative;
+      }
+
+      .scope p {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .scope-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+        padding: 0 1rem;
+      }
+
+      .scope-item {
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        padding: 1.8rem;
+        transition: all 0.4s ease;
+        border-left: 4px solid var(--primary);
+        position: relative;
+        overflow: hidden;
+        height: 100%;
+      }
+
+      .scope-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .scope-item:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow-hover);
+      }
+
+      .scope-item:hover::before {
+        opacity: 0.05;
+      }
+
+      .scope-item h3 {
+        color: var(--primary);
+        margin-bottom: 0.8rem;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 600;
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .scope-item h3::before {
+        content: "⬥";
+        color: var(--secondary);
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .scope-item p {
+        color: var(--gray-800);
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        line-height: 1.6;
+        position: relative;
+        z-index: 1;
+        text-align: left;
+        margin-bottom: 0;
+      }
+
+      /* Venue & Map Section */
+      .venue {
+        padding: 4rem 0;
+        background-color: var(--white);
+      }
+
+      .venue-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .venue-info h3 {
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .venue-info p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: var(--gray-800);
+        margin-bottom: 1rem;
+      }
+
+      .map-wrapper {
+        width: 100%;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: var(--box-shadow);
+        border: 5px solid var(--white);
+      }
+
+      .map-wrapper iframe {
+        display: block;
+      }
+
+      /* Publication section */
+      .publication {
+        min-height: 50vh;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: var(--white);
+        padding: 4rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .publication::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+        opacity: 0.3;
+      }
+
+      .publication h2 {
+        color: var(--accent);
+        font-size: clamp(2rem, 5vw, 2.8rem);
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .publication p {
+        max-width: 800px;
+        margin: 2rem auto;
+        font-size: clamp(1rem, 3vw, 1.3rem);
+        line-height: 1.8;
+        opacity: 0.9;
+      }
+
+      /* Submission guidelines section */
+      .submission-guidelines {
+        padding: 4rem 0;
+        background-color: var(--white);
+        position: relative;
+      }
+
+      .submission-guidelines::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          var(--gray-100) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .guidelines-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .guidelines-content h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: clamp(1.2rem, 3vw, 1.5rem);
+        font-weight: 600;
+      }
+
+      .guidelines-content p {
+        margin-bottom: 1rem;
+        font-size: clamp(1rem, 2vw, 1.2rem);
+      }
+
+      .guidelines-content ul {
+        margin-bottom: 1rem;
+        padding-left: 20px;
+      }
+
+      .guidelines-content li {
+        margin-bottom: 0.5rem;
+      }
+
+      /* Dates section */
+      .dates-section {
+        min-height: 60vh;
+        padding: 4rem 0 8rem;
+        background-color: var(--gray-100);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .dates-section::before {
+        content: "";
+        position: absolute;
+        bottom: -50%;
+        right: -50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle,
+          rgba(139, 0, 0, 0.03) 0%,
+          transparent 70%
+        );
+        z-index: 0;
+      }
+
+      .important-dates {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2.5rem;
+        margin-top: 3rem;
+        padding: 0 1rem;
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .date-card {
+        background-color: var(--white);
+        border-radius: 15px;
+        box-shadow: var(--box-shadow);
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border: 1px solid var(--gray-200);
+      }
+
+      .date-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .date-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow-hover);
+      }
+
+      .date-card h3 {
+        color: var(--primary);
+        font-size: clamp(1.1rem, 3vw, 1.3rem);
+        font-weight: 600;
+        padding: 1.5rem 1rem;
+        margin: 0;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--white);
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .date-wrapper {
+        padding: 2rem 1.5rem;
+        background-color: rgba(255, 245, 200, 0.5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 150px;
+      }
+
+      .date-card .date {
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 700;
+        color: var(--primary);
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.05);
+        padding: 0.5rem;
+        line-height: 1.5;
+      }
+
+      /* Ensure all date cards have the same appearance */
+      /*.date-card:nth-child(4) h3 {*/
+      /*}*/
+
+      /*.date-card:nth-child(4) .date-wrapper {*/
+      /*}*/
+
+      /* Responsive adjustments */
+      @media (max-width: 1024px) {
+        .important-dates {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 480px) {
+        .important-dates {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, var(--gray-800), #1a1a1a);
+        color: var(--white);
+        padding: 4rem 0 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-column h3 {
+        color: var(--accent);
+        margin-bottom: 1.2rem;
+        font-size: clamp(1.1rem, 3vw, 1.4rem);
+        font-weight: 600;
+        position: relative;
+        display: inline-block;
+      }
+
+      .footer-column h3::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 40px;
+        height: 2px;
+        background: var(--accent);
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-column a {
+        color: #ddd;
+        text-decoration: none;
+        transition: all 0.3s;
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        display: inline-block;
+        position: relative;
+      }
+
+      .footer-column a:hover {
+        color: var(--accent);
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+      }
+
+      .social-icons {
+        margin: 1.2rem 0;
+      }
+
+      .social-icons a {
+        color: var(--white);
+        margin: 0 1rem;
+        font-size: 1.8rem;
+        text-decoration: none;
+        transition: all 0.3s;
+        opacity: 0.8;
+        display: inline-block;
+      }
+
+      .social-icons a:hover {
+        color: var(--accent);
+        opacity: 1;
+        transform: translateY(-3px);
+      }
+
+      /* Contact Section */
+      .contact-details {
+        padding: 4rem 0 6rem;
+        background-color: var(--white);
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+        padding: 0 1rem;
+      }
+
+      .contact-item {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: var(--white);
+        border-radius: 20px;
+        box-shadow: var(--box-shadow);
+        transition: 0.3s;
+        border-bottom: 5px solid var(--primary);
+      }
+
+      .contact-item:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--box-shadow-hover);
+      }
+
+      .contact-item i {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+      }
+
+      .contact-item h3 {
+        color: var(--primary);
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      .contact-item p {
+        color: var(--gray-800);
+        font-size: 1.1rem;
+      }
+
+      .contact-item a {
+        color: var(--primary);
+        text-decoration: none;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-top">
+        <div class="container header-logos">
+          <div class="logo-group">
+            <a href="index.html" class="logo-group-link"
+              ><img src="jspm.png" alt="JSPM Logo" class="header-logo"
+            /></a>
+          </div>
+          <div class="conf-title">
+            <h1>
+              2<sup>nd</sup> International Conference on Computing,
+              Communication and <br />
+              Green Engineering (CCGE-2026)
+            </h1>
+          </div>
+          <div class="logo-group">
+            <img src="rscoe.png" alt="RSOCE Logo" class="header-logo" />
+            <img src="ieeePune.png" alt="IEEE Logo" class="header-logo ieee" />
+          </div>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <div class="container">
+          <nav>
+            <button class="menu-btn">
+              <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+              <li style="--i: 1"><a href="#" class="active">Home</a></li>
+              <li style="--i: 2"><a href="#about">About Us</a></li>
+              <li style="--i: 3"><a href="#scope">Scope</a></li>
+              <li style="--i: 4"><a href="committee.html">Committee</a></li>
+              <li style="--i: 5">
+                <a href="registration.html">Registration</a>
+              </li>
+              <li style="--i: 6"><a href="sponsorship.html">Sponsorship</a></li>
+              <li style="--i: 7"><a href="#brochure">Brochure</a></li>
+              <li style="--i: 8"><a href="#publication">Publication</a></li>
+              <li style="--i: 9">
+                <a href="submission-guidelines.html">Guidelines</a>
+              </li>
+              <li style="--i: 10"><a href="#dates">Dates</a></li>
+              <li style="--i: 11"><a href="#venue">Venue</a></li>
+              <li style="--i: 12"><a href="presentation.html">Presentation</a></li>
+              <li style="--i: 13"><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <div class="spotlight">
+      <div class="spotlight-label">Spotlight:</div>
+      <div class="spotlight-ticker">
+        <div class="ticker-content">
+          Hard Deadline for Paper Submission: 28th February 2026! | Conference
+          Record No: 67142 | Technically Co-sponsored by IEEE Pune Section | All
+          accepted papers will be submitted to IEEE Xplore.
+        </div>
+      </div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          2<sup>nd</sup> International Conference on Computing, Communication
+          and Green Engineering (CCGE-2026)
+        </h1>
+        <h2>#CCGE2026</h2>
+        <p>JSPM's RSCOE, Pune, India | May 7-8, 2026</p>
+        <p>Technically Co-sponsored by: IEEE Pune Section</p>
+        <div class="dates">May 7-8, 2026</div>
+        <div class="hero-buttons">
+          <a href="registration.html" class="btn">Register Now</a>
+          <a href="submission-guidelines.html" class="btn btn-outline"
+            >Submit Paper</a
+          >
+          <a href="#brochure" class="btn btn-outline">View Brochure</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="brochure-section reveal" id="brochure">
+      <div class="container">
+        <div class="brochure-grid">
+          <div class="brochure-copy">
+            <div class="brochure-kicker">Conference Brochure</div>
+            <h2>Quick access to the official CCGE-2026 brochure</h2>
+            <p>
+              Use this brochure to share the conference overview, themes, dates,
+              and submission details with your team or students. The poster is
+              placed prominently on the homepage for easy viewing and download.
+            </p>
+            <div class="brochure-actions">
+              <a href="browcher/image.png" class="btn" target="_blank" rel="noopener noreferrer">Open Brochure</a>
+              <a href="browcher/image.png" class="btn btn-outline" download>Download</a>
+            </div>
+          </div>
+          <div class="brochure-card">
+            <a href="browcher/image.png" target="_blank" rel="noopener noreferrer">
+              <img src="browcher/image.png" alt="CCGE-2026 conference brochure" />
+            </a>
+            <div class="caption">Click the brochure to view it in full size.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sponsors reveal" id="sponsors">
+      <div class="container">
+        <h2 class="section-title">Technical Sponsors</h2>
+        <div class="sponsor-logos">
+          <img src="/ieeePune.png" alt="IEEE Logo" class="sponsor-logo" />
+        </div>
+      </div>
+    </section>
+
+    <section class="about reveal" id="about">
+      <div class="container">
+        <h2 class="section-title">About CCGE-2026</h2>
+        <p>
+          The 2<sup>nd</sup> International Conference on Computing,
+          Communication and Green Engineering (CCGE-2026) aims to bring together
+          leading academic scientists, researchers and scholars to exchange and
+          share their experiences and research results on all aspects of
+          Computing, Communication and Green Engineering. It also provides a
+          premier interdisciplinary platform for researchers, practitioners and
+          educators to present and discuss the most recent innovations, trends,
+          and concerns as well as practical challenges encountered and solutions
+          adopted in the fields of Computing, Communication and Green
+          Engineering.
+        </p>
+      </div>
+    </section>
+
+    <section class="about rscoe-about reveal" id="about-rscoe">
+      <div class="container">
+        <h2 class="section-title">About RSCOE</h2>
+        <p>
+          JSPM's Rajarshi Shahu College of Engineering (RSCOE) is an autonomous
+          institute affiliated with Savitribai Phule Pune University.
+          Established in 2001, RSCOE has consistently been at the forefront of
+          providing quality technical education. The college is known for its
+          academic excellence, state-of-the-art infrastructure, and strong
+          industry-academia linkages. With numerous national and international
+          accolades, RSCOE continues to nurture young engineers and researchers,
+          preparing them to tackle global challenges through innovation and
+          sustainability.
+        </p>
+      </div>
+    </section>
+
+    <section class="scope reveal" id="scope">
+      <div class="container">
+        <h2 class="section-title">Conference Scope</h2>
+        <p>
+          The conference welcomes papers in the following areas (but not limited
+          to):
+        </p>
+        <div class="scope-list">
+          <div class="scope-item">
+            <h3>Track 1: Green Computing & AI</h3>
+            <p>
+              Energy-efficient IT solutions, sustainable data centers, green
+              software engineering, and AI/ML applications for environmental
+              sustainability and resource optimization.
+            </p>
+          </div>
+          <div class="scope-item">
+            <h3>Track 2: Advanced Communication</h3>
+            <p>
+              5G/6G network energy efficiency, IoT & wireless sensor networks,
+              next-gen optical communications, and secure networked systems for
+              green societies.
+            </p>
+          </div>
+          <div class="scope-item">
+            <h3>Track 3: Smart Systems & Energy</h3>
+            <p>
+              Smart grid technologies, renewable energy integration, intelligent
+              transportation systems, smart cities, and sustainable building
+              automation.
+            </p>
+          </div>
+          <div class="scope-item">
+            <h3>Track 4: Electronics & IoT</h3>
+            <p>
+              Energy harvesting circuits, low-power VLSI design, embedded
+              systems for sustainability, and industrial automation for energy
+              conservation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="publication reveal" id="publication">
+      <div class="container">
+        <h2 class="section-title">Publication</h2>
+        <p>
+          All accepted and presented papers will be forwarded for the possible
+          inclusion in IEEE Xplore.
+        </p>
+        <a href="submission-guidelines.html" class="btn"
+          >Submission Guidelines</a
+        >
+      </div>
+    </section>
+
+    <section class="dates-section reveal" id="dates">
+      <div class="container">
+        <h2 class="section-title">Important Dates</h2>
+        <div class="important-dates">
+          <div class="date-card">
+            <h3>Paper Submission Deadline</h3>
+            <div class="date-wrapper">
+              <div class="date">28th<br />February,<br />2026</div>
+            </div>
+          </div>
+
+          <div class="date-card">
+            <h3>Notification of Acceptance</h3>
+            <div class="date-wrapper">
+              <div class="date">31st<br />March,<br />2026</div>
+            </div>
+          </div>
+          <div class="date-card">
+            <h3>Deadline for Registration</h3>
+            <div class="date-wrapper">
+              <div class="date">8th<br />April,<br />2026</div>
+            </div>
+          </div>
+          <div class="date-card">
+            <h3>Camera Ready Paper Submission</h3>
+            <div class="date-wrapper">
+              <div class="date">20th<br />April,<br />2026</div>
+            </div>
+          </div>
+          <div class="date-card">
+            <h3>Conference Dates</h3>
+            <div class="date-wrapper">
+              <div class="date">May 7-8,<br />2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue reveal" id="venue">
+      <div class="container">
+        <h2 class="section-title">Conference Venue</h2>
+        <div class="venue-container">
+          <div class="venue-info">
+            <h3>JSPM's Rajarshi Shahu College of Engineering</h3>
+            <p>
+              Survey No. 80, Pune-Mumbai Bypass Highway, Tathawade, Pune 411033,
+              Maharashtra, India.
+            </p>
+            <p>
+              RSCOE is strategically located on the Pune-Mumbai highway,
+              providing easy access for participants traveling from across the
+              state and beyond.
+            </p>
+          </div>
+          <div class="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3780.9576402801454!2d73.7447915!3d18.6200922!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bbbc138acb7b%3A0x67043867a211a31d!2sJSPM%20Rajarshi%20Shahu%20College%20Of%20Engineering%20%2C%20Tathawade!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
+              width="100%"
+              height="400"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-details reveal" id="contact-info">
+      <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <i class="fas fa-envelope-open-text"></i>
+            <h3>Email Us</h3>
+            <p>
+              <a href="mailto:ccge-2026@jspmrscoe.edu.in"
+                >ccge-2026@jspmrscoe.edu.in</a
+              >
+            </p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+          <p><strong>Call Us</strong></p>
+
+<p><strong>Dr. Swati D. Kale</strong><br>
+<a href="tel:+919763722247">+91 97637 22247</a></p>
+
+<p><strong>Dr. Nihar Ranjan</strong><br>
+<a href="tel:+919763722262">+91 97637 22262</a></p>
+
+<p><strong>Dr. Jayesh Sarwade</strong><br>
+<a href="tel:+919860834782">+91 98608 34782</a></p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Location</h3>
+            <p>JSPM's RSCOE, Tathawade,<br />Pune - 411033</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="reveal">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul>
+              <li>Email: ccge-2026@jspmrscoe.edu.in</li>
+              <li>
+                Website:
+                <a
+                  href="https://www.rscoeccge-2026.com/"
+                  target="_blank"
+                  style="color: #ddd"
+                  >www.rscoeccge-2026.com</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#about">About Us</a></li>
+              <li><a href="#scope">Scope</a></li>
+              <li><a href="#publication">Publication</a></li>
+              <li><a href="submission-guidelines.html">Guidelines</a></li>
+              <li><a href="#dates">Important Dates</a></li>
+              <li><a href="#venue">Venue</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="index.html#scope">Call for Papers</a></li>
+              <li><a href="registration.html">Registration</a></li>
+              <li><a href="committee.html">Committee</a></li>
+              <li><a href="presentation.html">Presentation</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li>
+                <a href="submission-guidelines.html">Author Guidelines</a>
+              </li>
+              <li><a href="sponsorship.html">Sponsorship</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="social-icons">
+            <a
+              href="https://www.linkedin.com/school/jspm-s-rajarshi-shahu-college-of-engineering/about/"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/jspmrscoe_official?igsh=NXVodHpka3Bwanpq"
+              target="_blank"
+              ><i class="fab fa-instagram"></i
+            ></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+          </div>
+          <p>&copy; 2026 CCGE-2026. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const menuBtn = document.querySelector(".menu-btn");
+        const navLinks = document.querySelector(".nav-links");
+
+        if (menuBtn) {
+          menuBtn.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            menuBtn.innerHTML = navLinks.classList.contains("active")
+              ? '<i class="fas fa-times"></i>'
+              : '<i class="fas fa-bars"></i>';
+          });
+        }
+
+        // Close menu when clicking a link
+        const navItems = document.querySelectorAll(".nav-links a");
+        navItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+          });
+        });
+
+        // Reveal animations on scroll
+        function reveal() {
+          const reveals = document.querySelectorAll(".reveal");
+          reveals.forEach((element) => {
+            const windowHeight = window.innerHeight;
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            if (elementTop < windowHeight - elementVisible) {
+              element.classList.add("active");
+            }
+          });
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+      });
+    </script>
+  </body>
+</html>

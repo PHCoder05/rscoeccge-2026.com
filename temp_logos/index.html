@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCGE-2026 | International Conference</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #660000;
+            --primary-light: #c70000;
+            --secondary: #FFD700;
+            --secondary-dark: #FFC000;
+            --secondary-light: #FFE866;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-800: #343a40;
+            --black: #121212;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --box-shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        /* Add custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html, body {
+            height: 100%;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+            overflow: hidden;
+        }
+        
+        header {
+            background-color: rgba(139, 0, 0, 0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        /* Mobile menu button */
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-btn:hover {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: '●';
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        .logo:hover {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-light);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            height: auto;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.92), rgba(102, 0, 0, 0.9)),
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            padding: 120px 0 60px;
+            overflow: hidden;
+        }
+        
+        /* Enhanced particles effect */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.1) 0%, transparent 8%),
+                radial-gradient(circle at 50% 70%, rgba(255,255,255,0.08) 0%, transparent 8%),
+                radial-gradient(circle at 80% 40%, rgba(255,255,255,0.12) 0%, transparent 8%);
+            background-size: 3vmin 3vmin, 4vmin 4vmin, 2.5vmin 2.5vmin;
+            background-position: 0 0;
+            animation: moveParticles 60s linear infinite;
+            opacity: 0.5;
+        }
+        
+        @keyframes moveParticles {
+            0% {
+                background-position: 0% 0%, 0% 0%, 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%, 80% 120%, 120% 80%;
+            }
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--white), transparent);
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+            background: linear-gradient(45deg, var(--white) 30%, var(--secondary) 70%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: gradientText 5s ease infinite;
+        }
+        
+        @keyframes gradientText {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .hero h2 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin: 0.5rem 0 1.5rem;
+            color: var(--secondary);
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.3s;
+            animation-fill-mode: both;
+            letter-spacing: 2px;
+        }
+        
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 0.5rem;
+            opacity: 0.95;
+            animation: fadeIn 1s ease 0.6s;
+            animation-fill-mode: both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .hero .dates {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: bold;
+            margin: 1.5rem 0;
+            color: var(--secondary);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1s ease 0.9s;
+            animation-fill-mode: both;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 0.5rem 2rem;
+            border-radius: 50px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,215,0,0.3);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 1.2s;
+            animation-fill-mode: both;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+            padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 3rem);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+        }
+        
+        /* Mobile menu styles */
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.3s ease;
+                z-index: 999;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInNavLinks 0.5s forwards;
+                animation-delay: calc(0.1s * var(--i, 0));
+            }
+            
+            @keyframes fadeInNavLinks {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .nav-links a {
+                font-size: 1.3rem;
+                display: block;
+                padding: 0.5rem 1rem;
+            }
+            
+            .hero {
+                padding: 100px 0 40px;
+            }
+            
+            .hero-content {
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+            }
+            
+            .hero h2 {
+                font-size: clamp(2rem, 6vw, 3.5rem);
+                margin: 0.5rem 0 1rem;
+            }
+            
+            .hero p {
+                font-size: clamp(1rem, 2vw, 1.2rem);
+            }
+            
+            .hero .dates {
+                font-size: clamp(1.2rem, 3vw, 1.8rem);
+                padding: 0.4rem 1.5rem;
+                margin: 1rem 0;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 0 1rem;
+                margin-top: 1.5rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 0 30px;
+            }
+            
+            .hero-content {
+                padding: 0.8rem;
+            }
+            
+            .hero h1 {
+                font-size: clamp(1.5rem, 3.5vw, 2rem);
+            }
+            
+            .hero h2 {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+            }
+            
+            .hero p {
+                font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+            }
+        }
+        
+        /* Add smooth reveal animation for sections */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Sponsors section */
+        .sponsors {
+            min-height: 50vh;
+            text-align: center;
+            padding: 4rem 0;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .sponsors::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.03) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .sponsor-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .sponsor-logo {
+            max-width: 300px;
+            width: 100%;
+            height: auto;
+            filter: grayscale(0%);
+            opacity: 1;
+            transition: all 0.5s ease;
+            transform: scale(1);
+            padding: 1.5rem;
+        }
+        
+        .sponsor-logo:hover {
+            transform: scale(1.02);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        @media (max-width: 768px) {
+            .sponsor-logos {
+                padding: 1.5rem;
+            }
+            
+            .sponsor-logo {
+                max-width: 250px;
+                padding: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .sponsor-logos {
+                padding: 1rem;
+            }
+            
+            .sponsor-logo {
+                max-width: 200px;
+                padding: 0.5rem;
+            }
+        }
+        
+        /* About section */
+        .about {
+            min-height: 60vh;
+            padding: 4rem 0;
+            background-color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--gray-100) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            position: relative;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            font-weight: 700;
+            z-index: 1;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -15px;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .about p {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.8;
+            color: var(--gray-800);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 1.5rem;
+        }
+        
+        /* Scope section */
+        .scope {
+            padding: 4rem 0;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .scope p {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+        
+        .scope-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+        }
+        
+        .scope-item {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            padding: 1.8rem;
+            transition: all 0.4s ease;
+            border-left: 4px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+        
+        .scope-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+        
+        .scope-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .scope-item:hover::before {
+            opacity: 0.05;
+        }
+        
+        .scope-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .scope-item h3::before {
+            content: '⬥';
+            color: var(--secondary);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .scope-item p {
+            color: var(--gray-800);
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            text-align: left;
+            margin-bottom: 0;
+        }
+        
+        /* Publication section */
+        .publication {
+            min-height: 50vh;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .publication::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><circle cx="2" cy="2" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .publication h2 {
+            color: var(--secondary);
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .publication p {
+            max-width: 800px;
+            margin: 2rem auto;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        
+        /* Submission guidelines section */
+        .submission-guidelines {
+            padding: 4rem 0;
+            background-color: var(--white);
+            position: relative;
+        }
+        
+        .submission-guidelines::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--gray-100) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .guidelines-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .guidelines-content h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+        }
+        
+        .guidelines-content p {
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+        
+        .guidelines-content ul {
+            margin-bottom: 1rem;
+            padding-left: 20px;
+        }
+        
+        .guidelines-content li {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Dates section */
+        .dates-section {
+            min-height: 60vh;
+            padding: 4rem 0 8rem;
+            background-color: var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dates-section::before {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.03) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .important-dates {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .date-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .date-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .date-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--box-shadow-hover);
+        }
+        
+        .date-card h3 {
+            color: var(--primary);
+            font-size: clamp(1.1rem, 3vw, 1.3rem);
+            font-weight: 600;
+            padding: 1.5rem 1rem;
+            margin: 0;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .date-wrapper {
+            padding: 2rem 1.5rem;
+            background-color: rgba(255, 245, 200, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+        }
+        
+        .date-card .date {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            color: var(--primary);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            padding: 0.5rem;
+            line-height: 1.5;
+        }
+        
+        /* Ensure all date cards have the same appearance */
+        /*.date-card:nth-child(4) h3 {*/
+        /*}*/
+        
+        /*.date-card:nth-child(4) .date-wrapper {*/
+        /*}*/
+        
+        /* Responsive adjustments */
+        @media (max-width: 1024px) {
+            .important-dates {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .important-dates {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--gray-800), #1a1a1a);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-column h3 {
+            color: var(--secondary);
+            margin-bottom: 1.2rem;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background: var(--secondary);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            display: inline-block;
+            position: relative;
+        }
+        
+        .footer-column a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+        
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin: 1.2rem 0;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            opacity: 0.8;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">CCGE-2026</a>
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li style="--i:1"><a href="#about">About</a></li>
+                    <li style="--i:2"><a href="#scope">Scope</a></li>
+                    <li style="--i:3"><a href="#publication">Publication</a></li>
+                    <li style="--i:4"><a href="submission-guidelines.html">Guidelines</a></li>
+                    <li style="--i:5"><a href="#dates">Important Dates</a></li>
+                    <li style="--i:6"><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>2nd International Conference on Computing, Communication and Green Engineering</h1>
+            <h2>CCGE-2026</h2>
+            <p>Technical Sponsorship: IEEE, Pune Section</p>
+            <p>Conference Record No: 67142 (Approval awaited)</p>
+            <div class="dates">May 7-8, 2026</div>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Register Now</a>
+                <a href="#" class="btn btn-outline">Submit Paper</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="sponsors reveal" id="sponsors">
+        <div class="container">
+            <h2 class="section-title">Technical Sponsors</h2>
+            <div class="sponsor-logos">
+                <img src="/ieeePune.png" alt="IEEE Logo" class="sponsor-logo">
+            </div>
+        </div>
+    </section>
+
+    <section class="about reveal" id="about">
+        <div class="container">
+            <h2 class="section-title">About The Conference</h2>
+            <p>The 2nd International Conference on Computing, Communication and Green Engineering (CCGE-2026) aims to bring together leading academic scientists, researchers and scholars to exchange and share their experiences and research results on all aspects of Computing, Communication and Green Engineering. It also provides a premier interdisciplinary platform for researchers, practitioners and educators to present and discuss the most recent innovations, trends, and concerns as well as practical challenges encountered and solutions adopted in the fields of Computing, Communication and Green Engineering.</p>
+        </div>
+    </section>
+
+    <section class="scope reveal" id="scope">
+        <div class="container">
+            <h2 class="section-title">Conference Scope</h2>
+            <p>The conference welcomes papers in the following areas (but not limited to):</p>
+            <div class="scope-list">
+                <div class="scope-item">
+                    <h3>Green Computing</h3>
+                    <p>Green computing and energy-efficient IT solutions for sustainable technology development.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Cloud Computing</h3>
+                    <p>Cloud computing and sustainable data centers for efficient resource utilization.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Cyber Security</h3>
+                    <p>Cyber security in the era of digital transformation and emerging threats.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>5G Networks</h3>
+                    <p>Advanced 5G network technologies, applications, and security considerations.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>Sustainable IT Practices</h3>
+                    <p>Sustainable IT practices for reducing environmental impact and carbon footprint.</p>
+                </div>
+                <div class="scope-item">
+                    <h3>AI for Sustainability</h3>
+                    <p>Artificial Intelligence (AI) and machine learning applications for sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="publication reveal" id="publication">
+        <div class="container">
+            <h2 class="section-title">Publication</h2>
+            <p>All accepted and presented papers will be forwarded for the possible inclusion in IEEE Xplore.</p>
+            <a href="submission-guidelines.html" class="btn">Submission Guidelines</a>
+        </div>
+    </section>
+
+    <section class="dates-section reveal" id="dates">
+        <div class="container">
+            <h2 class="section-title">Important Dates</h2>
+            <div class="important-dates">
+             <div class="date-card">
+    <h3>Paper Submission Deadline</h3>
+    <div class="date-wrapper">
+        <div class="date">28th<br>February,<br>2026</div>
+    </div>
+</div>
+
+                <div class="date-card">
+                    <h3>Notification of Acceptance</h3>
+                    <div class="date-wrapper">
+                        <div class="date">31st<br>March,<br>2026</div>
+                    </div>
+                </div>
+                  <div class="date-card">
+                    <h3>Deadline for Registration</h3>
+                    <div class="date-wrapper">
+                        <div class="date">15th<br>April,<br>2026</div>
+                    </div>
+                </div>
+                <div class="date-card">
+                    <h3>Camera Ready Paper Submission</h3>
+                    <div class="date-wrapper">
+                        <div class="date">20th<br>April,<br>2026</div>
+                    </div>
+                </div>
+                <div class="date-card">
+                    <h3>Conference Dates</h3>
+                    <div class="date-wrapper">
+                        <div class="date">May 7-8,<br>2026</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="reveal">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: ccge-2026@jspmrscoe.edu.in</li>
+                        <li>Phone: -</li>
+                        <li>Address: -</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#scope">Scope</a></li>
+                        <li><a href="#publication">Publication</a></li>
+                        <li><a href="submission-guidelines.html">Guidelines</a></li>
+                        <li><a href="#dates">Important Dates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Call for Papers</a></li>
+                        <li><a href="#">Registration</a></li>
+                        <li><a href="#">Paper Submission</a></li>
+                        <li><a href="#">Author Guidelines</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p>&copy; 2026 CCGE-2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Reveal animations on scroll
+            function reveal() {
+                const reveals = document.querySelectorAll('.reveal');
+                
+                reveals.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', reveal);
+            reveal(); // Initial check
+        });
+    </script>
+</body>
+</html>

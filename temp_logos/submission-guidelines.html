@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Guidelines - CCGE-2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8B0000;
+            --primary-dark: #660000;
+            --primary-light: #c70000;
+            --secondary: #FFD700;
+            --secondary-dark: #FFC000;
+            --secondary-light: #FFE866;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-800: #343a40;
+            --black: #121212;
+            --box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            --box-shadow-hover: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        html, body {
+            height: 100%;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        header {
+            background-color: rgba(139, 0, 0, 0.97);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--white);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo::before {
+            content: '●';
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+        
+        .logo:hover {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary-light);
+        }
+        
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-btn:hover {
+            color: var(--secondary);
+            transform: scale(1.05);
+        }
+        
+        .page-header {
+            background: linear-gradient(135deg, rgba(139, 0, 0, 0.92), rgba(102, 0, 0, 0.9)),
+                        url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1920');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0 60px;
+            margin-bottom: 40px;
+        }
+        
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--secondary);
+            font-weight: 700;
+        }
+        
+        .guidelines-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 40px;
+        }
+        
+        .guidelines-content h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+        }
+        
+        .submission-link {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: var(--gray-100);
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+        }
+        
+        .submission-link a {
+            color: var(--primary-dark);
+            text-decoration: underline;
+            word-break: break-all;
+            font-weight: 600;
+        }
+        
+        .submission-link a:hover {
+            color: var(--primary-light);
+        }
+        
+        .guidelines-content h3:first-child {
+            margin-top: 0;
+        }
+        
+        .guidelines-content p {
+            margin-bottom: 1rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
+        }
+        
+        .guidelines-content ul {
+            margin-bottom: 1.5rem;
+            padding-left: 20px;
+        }
+        
+        .guidelines-content li {
+            margin-bottom: 0.8rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--primary-dark);
+            padding: clamp(0.8rem, 2vw, 1.2rem) clamp(1.5rem, 4vw, 3rem);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid var(--secondary);
+            font-size: clamp(0.9rem, 2vw, 1.2rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin-top: 1.5rem;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: var(--white);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .btn:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-center {
+            display: block;
+            text-align: center;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--gray-800), #1a1a1a);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        footer p {
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.3s ease;
+                z-index: 999;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.2);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .nav-links li {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInNavLinks 0.5s forwards;
+                animation-delay: calc(0.1s * var(--i, 0));
+            }
+            
+            @keyframes fadeInNavLinks {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .nav-links a {
+                font-size: 1.3rem;
+                display: block;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">CCGE-2026</a>
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li style="--i:1"><a href="index.html#about">About</a></li>
+                    <li style="--i:2"><a href="index.html#scope">Scope</a></li>
+                    <li style="--i:3"><a href="index.html#publication">Publication</a></li>
+                    <li style="--i:4"><a href="submission-guidelines.html">Guidelines</a></li>
+                    <li style="--i:5"><a href="index.html#dates">Important Dates</a></li>
+                    <li style="--i:6"><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Submission Guidelines</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="guidelines-content">
+            <p class="submission-link">
+                <strong>Paper Submission Link:</strong> <a href="https://cmt3.research.microsoft.com/CCGE2026" target="_blank" rel="noopener noreferrer">https://cmt3.research.microsoft.com/CCGE2026</a>
+            </p>
+
+            <h3>Paper Submission through Microsoft CMT</h3>
+            <p>The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.</p>
+            
+            <h3>Author Instructions:</h3>
+            <p>Please comply with the following guidelines:</p>
+            <ul>
+                <li>All papers must be in English.</li>
+                <li>The paper must discuss only new and previously unpublished results.</li>
+                <li>The paper must be formatted according to the <a href="https://www.ieee.org/conferences/publishing/templates.html" target="_blank">IEEE Manuscript Templates for Conference Proceedings</a>, have a minimum of four pages, and must not exceed 6 pages, including figures and references.</li>
+                <li>The paper must address at least one category specified in the Call for Papers.</li>
+            </ul>
+            
+            <h3>Additional guidelines:</h3>
+            <ul>
+                <li>The plagiarism check will be done on all submitted papers. Plagiarism and self-plagiarism applies to all previously published work, irrespective of whether the other publication is inside or outside of IEEE. We are very serious about Plagiarism Content; we accept only original articles. The article may be rejected at any time if found plagiarized.</li>
+                <li>All papers that are accepted must be presented at the conference. In case a paper is not presented at the conference, it shall be deemed a "no-show." No-shows will be removed from post-conference distribution.</li>
+                <li>All accepted, registered, and presented papers will be submitted to IEEE for possible inclusion in IEEE Xplore® digital library.</li>
+            </ul>
+            
+            <div class="btn-center">
+                <a href="https://cmt3.research.microsoft.com/CCGE2026" target="_blank" rel="noopener noreferrer" class="btn">Submit Your Paper</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CCGE-2026. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    menuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // Close menu when clicking a link
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration | CCGE-2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+:root {
+--primary:#8b0000;
+--primary-dark:#660000;
+--accent:#D58E58;
+--white:#ffffff;
+--gray-100:#f8f9fa;
+--gray-200:#e9ecef;
+--gray-800:#343a40;
+--box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#fff;
+color:#343a40;
+line-height:1.6;
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#fff;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-top{
+padding:1rem 0;
+border-bottom:2px solid var(--primary);
+}
+
+.header-logos{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.header-logo{
+height:60px;
+}
+
+.conf-title{
+text-align:center;
+flex:1;
+}
+
+.conf-title h1{
+font-size:1.2rem;
+color:var(--primary);
+}
+
+.header-bottom{
+background:var(--primary);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+width:100%;
+}
+
+.nav-links li{
+flex:1;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+text-align:center;
+padding:1rem;
+font-size:0.85rem;
+font-weight:600;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+background:var(--accent);
+}
+
+.menu-btn{
+display:none;
+}
+
+/* SPOTLIGHT */
+
+.spotlight{
+background:#fff;
+padding:8px 0;
+margin-top:160px;
+border-bottom:1px solid #e9ecef;
+display:flex;
+align-items:center;
+width:100%;
+overflow:hidden;
+}
+
+.spotlight-label{
+color:#8b0000;
+font-weight:800;
+padding:0 15px;
+white-space:nowrap;
+}
+
+.spotlight-ticker{
+flex:1;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.ticker-content{
+display:inline-block;
+white-space:nowrap;
+padding-left:100%;
+animation:ticker 40s linear infinite;
+color:var(--primary);
+font-weight:600;
+}
+
+@keyframes ticker{
+0%{transform:translate3d(0,0,0)}
+100%{transform:translate3d(-100%,0,0)}
+}
+
+/* PAGE HEADER */
+
+.page-header{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('image.png');
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 0 60px;
+}
+
+.page-title{
+font-size:3rem;
+color:var(--accent);
+}
+
+/* REGISTRATION */
+
+.registration-content{
+max-width:1000px;
+margin:4rem auto;
+}
+
+.fee-table{
+width:100%;
+border-collapse:collapse;
+margin:2rem 0;
+box-shadow:var(--box-shadow);
+}
+
+.fee-table th{
+background:var(--primary);
+color:white;
+padding:1rem;
+text-align:left;
+}
+
+.fee-table td{
+padding:1rem;
+border-bottom:1px solid #eee;
+}
+
+.fee-table tr:nth-child(even){
+background:#fff9f9;
+}
+
+.info-box{
+background:#f8f9fa;
+padding:2rem;
+border-left:6px solid var(--primary);
+margin-top:3rem;
+border-radius:10px;
+}
+
+.info-box h3{
+color:var(--primary);
+margin-bottom:1rem;
+}
+
+.info-box ul{
+padding-left:1.5rem;
+}
+
+.info-box li{
+margin-bottom:0.7rem;
+}
+
+.closed-note{
+color:#8b0000;
+font-weight:700;
+margin-top:1.5rem;
+font-size:1.1rem;
+}
+
+/* FOOTER */
+
+footer{
+background:#343a40;
+color:white;
+padding:3rem 0;
+margin-top:4rem;
+}
+
+.footer-content{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:2rem;
+}
+
+.footer-column h3{
+color:var(--accent);
+margin-bottom:1rem;
+}
+
+.footer-column ul{
+list-style:none;
+}
+
+.footer-column li{
+margin-bottom:0.5rem;
+}
+
+.footer-column a{
+color:#ddd;
+text-decoration:none;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:2rem;
+}
+
+.social-icons a{
+color:white;
+font-size:1.6rem;
+margin:0 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header-logos {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .spotlight {
+    margin-top: 220px;
+  }
+  .page-title {
+    font-size: 2rem;
+  }
+  .menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: var(--primary);
+    flex-direction: column;
+    justify-content: center;
+    transition: 0.3s;
+  }
+  .nav-links.active {
+    right: 0;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-top">
+<div class="container header-logos">
+
+<img src="jspm.png" class="header-logo">
+
+<div class="conf-title">
+<h1>2<sup>nd</sup> International Conference on Computing, Communication and Green Engineering (CCGE-2026)</h1>
+</div>
+
+<div>
+<img src="rscoe.png" class="header-logo">
+<img src="ieeePune.png" class="header-logo">
+</div>
+
+</div>
+</div>
+
+<div class="header-bottom">
+<div class="container">
+<nav>
+
+<button class="menu-btn"><i class="fas fa-bars"></i></button>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About Us</a></li>
+<li><a href="index.html#scope">Scope</a></li>
+<li><a href="committee.html">Committee</a></li>
+<li><a href="registration.html" class="active">Registration</a></li>
+<li><a href="sponsorship.html">Sponsorship</a></li>
+<li><a href="submission-guidelines.html">Guidelines</a></li>
+<li><a href="presentation.html">Presentation</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+</div>
+</div>
+
+</header>
+
+<div class="spotlight">
+<div class="spotlight-label">Spotlight:</div>
+<div class="spotlight-ticker">
+<div class="ticker-content">
+Hard Deadline for Paper Submission: 28th February 2026 | IEEE Xplore Submission Included
+</div>
+</div>
+</div>
+
+<div class="page-header">
+<div class="container">
+<h1 class="page-title">Registration & Fees</h1>
+<p>Secure your spot at the forefront of Green Engineering</p>
+</div>
+</div>
+
+<main class="container registration-content">
+
+<h2>Registration Fee Structure (Closed)</h2>
+
+<table class="fee-table">
+<thead>
+<tr>
+<th>Category</th>
+<th>Indian Delegates (INR)</th>
+<th>International Delegates (USD)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>IEEE Member</td>
+<td>₹ 7,500/-</td>
+<td>$105</td>
+</tr>
+<tr>
+<td>Non-IEEE Member</td>
+<td>₹ 8,000/-</td>
+<td>$111</td>
+</tr>
+<tr>
+<td>IEEE Student Member</td>
+<td>₹ 7,000/-</td>
+<td>$100</td>
+</tr>
+<tr>
+<td>Non-IEEE Student Member</td>
+<td>₹ 7,500/-</td>
+<td>$105</td>
+</tr>
+</tbody>
+</table>
+
+<div class="info-box">
+
+<h3>Important Notes</h3>
+
+<ul>
+<li><strong>Conference ISBN:</strong> 979-8-3315-8889-2</li>
+<li><strong>Conference Website:</strong> https://www.rscoeccge-2026.com/</li>
+<li>At least one author per paper must register.</li>
+<li>Registration fee is non-refundable.</li>
+<li><strong>Contact Person:</strong> Dr. Swati D. Kale</li>
+</ul>
+
+<p class="closed-note">Registration is closed now.</p>
+
+</div>
+
+</main>
+
+<footer>
+
+<div class="container footer-content">
+
+<div class="footer-column">
+<h3>Contact</h3>
+<ul>
+<li>Email: ccge-2026@jspmrscoe.edu.in</li>
+<li>Website: www.rscoeccge-2026.com</li>
+</ul>
+</div>
+
+<div class="footer-column">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="committee.html">Committee</a></li>
+<li><a href="registration.html">Registration</a></li>
+<li><a href="submission-guidelines.html">Guidelines</a></li>
+<li><a href="presentation.html">Presentation</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 CCGE-2026. All rights reserved.</p>
+</div>
+
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const menuBtn = document.querySelector(".menu-btn");
+  const navLinks = document.querySelector(".nav-links");
+
+  menuBtn.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+  });
+});
+</script>
+
+</body>
+</html>

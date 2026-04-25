@@ -1,0 +1,18 @@
+# Enable URL rewriting
+RewriteEngine On
+RewriteBase /
+
+# Map requests without .html extension to .html files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Redirect from .html to clean URLs (for SEO and consistency)
+# Use THE_REQUEST to prevent internal loops
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /(.+)\.html\ HTTP/
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# Optional: Ensure index.html is served for the root
+DirectoryIndex index.html
+

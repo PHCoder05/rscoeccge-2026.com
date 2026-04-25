@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Details | CCGE-2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+:root{
+--primary:#8b0000;
+--primary-dark:#660000;
+--accent:#D58E58;
+--white:#ffffff;
+--gray-100:#f8f9fa;
+--gray-200:#e9ecef;
+--gray-800:#343a40;
+--box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#fff;
+color:#343a40;
+line-height:1.6;
+}
+
+.container{
+width:90%;
+max-width:1300px;
+margin:auto;
+}
+
+/* HEADER */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+background:#fff;
+z-index:1000;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-top{
+padding:1rem 0;
+border-bottom:2px solid var(--primary);
+}
+
+.header-logos{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.header-logo{
+height:60px;
+}
+
+.conf-title{
+text-align:center;
+flex:1;
+}
+
+.conf-title h1{
+font-size:1.2rem;
+color:var(--primary);
+}
+
+.header-bottom{
+background:var(--primary);
+}
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+width:100%;
+}
+
+.nav-links li{
+flex:1;
+}
+
+.nav-links a{
+display:block;
+color:white;
+text-decoration:none;
+text-align:center;
+padding:1rem;
+font-size:0.85rem;
+font-weight:600;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+background:var(--accent);
+}
+
+.menu-btn{
+display:none;
+}
+
+/* SPOTLIGHT */
+
+.spotlight{
+background:#fff;
+padding:8px 0;
+margin-top:160px;
+border-bottom:1px solid #e9ecef;
+display:flex;
+align-items:center;
+overflow:hidden;
+}
+
+.spotlight-label{
+color:#8b0000;
+font-weight:800;
+padding:0 15px;
+}
+
+.spotlight-ticker{
+flex:1;
+overflow:hidden;
+white-space:nowrap;
+}
+
+.ticker-content{
+display:inline-block;
+padding-left:100%;
+animation:ticker 40s linear infinite;
+color:var(--primary);
+font-weight:600;
+}
+
+@keyframes ticker{
+0%{transform:translate3d(0,0,0)}
+100%{transform:translate3d(-100%,0,0)}
+}
+
+/* PAGE HEADER */
+
+.page-header{
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('image.png');
+background-size:cover;
+background-position:center;
+color:white;
+text-align:center;
+padding:100px 0 60px;
+}
+
+.page-title{
+font-size:3rem;
+color:var(--accent);
+}
+
+.registration-content{
+max-width:1000px;
+margin:4rem auto;
+}
+
+/* PAYMENT BOX */
+
+.payment-box{
+background:var(--gray-100);
+padding:3rem;
+border-radius:10px;
+box-shadow:var(--box-shadow);
+margin:2rem auto;
+max-width:650px;
+border-top:5px solid var(--primary);
+}
+
+.payment-box h2{
+color:var(--primary);
+margin-bottom:2rem;
+text-align:center;
+}
+
+.payment-box table{
+width:100%;
+border-collapse:collapse;
+}
+
+.payment-box td{
+padding:15px 10px;
+border-bottom:1px solid #ddd;
+}
+
+.payment-box tr:last-child td{
+border-bottom:none;
+}
+
+.payment-box td:first-child{
+font-weight:600;
+color:var(--primary);
+width:40%;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+background:var(--primary);
+color:white;
+padding:12px 28px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+border:none;
+cursor:pointer;
+transition:.3s;
+}
+
+.btn:hover{
+background:var(--accent);
+}
+
+/* IMPORTANT BOX */
+
+.payment-note{
+margin-top:2rem;
+padding:1.8rem;
+background:#fff3f3;
+border-left:5px solid var(--primary);
+border-radius:6px;
+}
+
+.step{
+display:flex;
+gap:10px;
+margin-bottom:10px;
+}
+
+.step i{
+color:var(--primary);
+margin-top:3px;
+}
+
+/* FOOTER */
+
+footer{
+background:#343a40;
+color:white;
+padding:3rem 0;
+margin-top:4rem;
+}
+
+.footer-content{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:2rem;
+}
+
+.footer-column h3{
+color:var(--accent);
+margin-bottom:1rem;
+}
+
+.footer-column ul{
+list-style:none;
+}
+
+.footer-column li{
+margin-bottom:0.5rem;
+}
+
+.footer-column a{
+color:#ddd;
+text-decoration:none;
+}
+
+.footer-bottom{
+text-align:center;
+margin-top:2rem;
+}
+
+.social-icons a{
+color:white;
+font-size:1.6rem;
+margin:0 10px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.menu-btn{
+display:block;
+background:none;
+border:none;
+color:white;
+font-size:1.5rem;
+}
+
+.nav-links{
+position:fixed;
+top:0;
+right:-100%;
+width:80%;
+height:100vh;
+background:var(--primary);
+flex-direction:column;
+justify-content:center;
+align-items:center;
+gap:2rem;
+transition:.3s;
+}
+
+.nav-links.active{
+right:0;
+}
+
+.payment-box{
+padding:1.5rem;
+margin:1rem;
+}
+
+.payment-box td{
+display:block;
+width:100%!important;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header-top">
+<div class="container header-logos">
+
+<img src="jspm.png" class="header-logo">
+
+<div class="conf-title">
+<h1>2<sup>nd</sup> International Conference on Computing, Communication and Green Engineering (CCGE-2026)</h1>
+</div>
+
+<div>
+<img src="rscoe.png" class="header-logo">
+<img src="ieeePune.png" class="header-logo">
+</div>
+
+</div>
+</div>
+
+<div class="header-bottom">
+<div class="container">
+
+<nav>
+
+<button class="menu-btn"><i class="fas fa-bars"></i></button>
+
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#about">About Us</a></li>
+<li><a href="index.html#scope">Scope</a></li>
+<li><a href="committee.html">Committee</a></li>
+<li><a href="registration.html" class="active">Registration</a></li>
+<li><a href="sponsorship.html">Sponsorship</a></li>
+<li><a href="submission-guidelines.html">Guidelines</a></li>
+<li><a href="presentation.html">Presentation</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+
+</nav>
+
+</div>
+</div>
+
+</header>
+
+<div class="spotlight">
+<div class="spotlight-label">Spotlight:</div>
+
+<div class="spotlight-ticker">
+<div class="ticker-content">
+Hard Deadline for Paper Submission: 28th February 2026 | Conference Record No: 67142 | Technically Co-sponsored by IEEE Pune Section | All accepted papers will be submitted to IEEE Xplore.
+</div>
+</div>
+</div>
+
+<div class="page-header">
+<div class="container">
+<h1 class="page-title">Payment Details</h1>
+<p>Complete your registration payment to secure your spot</p>
+</div>
+</div>
+
+<main class="container registration-content">
+
+<div class="payment-box">
+
+<h2>Bank Payment Details</h2>
+
+<table>
+<tr>
+<td>Account Name</td>
+<td>Jaywant Multistate Credit Co-Operative Soc. Ltd</td>
+</tr>
+
+<tr>
+<td>Account Number</td>
+<td>036120100001558</td>
+</tr>
+
+<tr>
+<td>IFSC Code</td>
+<td>TJSB0000036</td>
+</tr>
+
+<tr>
+<td>Branch</td>
+<td>Market Yard</td>
+</tr>
+</table>
+
+<div style="text-align:center;margin-top:1.5rem;">
+
+<button id="copyBtn" class="btn">
+<i class="fas fa-copy"></i> Copy Bank Details
+</button>
+
+</div>
+
+<div class="payment-note">
+
+<p style="margin-bottom:15px;font-weight:600;">
+<i class="fas fa-info-circle"></i> Important Instructions
+</p>
+
+<div class="step">
+<i class="fas fa-check-circle"></i>
+<p>Complete the registration payment using the bank details above.</p>
+</div>
+
+<!--<div class="step">-->
+<!--<i class="fas fa-check-circle"></i>-->
+<!--<p>Email the payment receipt to <strong>ccge-2026@jspmrscoe.edu.in</strong>.</p>-->
+<!--</div>-->
+
+<div class="step">
+<i class="fas fa-check-circle"></i>
+<p>After successful payment, kindly fill the registration form.</p>
+</div>
+
+<a href="https://forms.gle/1DJeu8Ap7MCFb6b69"
+target="_blank"
+class="btn"
+style="margin-top:15px;">
+Fill Registration Form
+</a>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+
+<div class="container footer-content">
+
+<div class="footer-column">
+<h3>Contact</h3>
+<ul>
+<li>Email: ccge-2026@jspmrscoe.edu.in</li>
+<li>Website: www.rscoeccge-2026.com</li>
+</ul>
+</div>
+
+<div class="footer-column">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="committee.html">Committee</a></li>
+<li><a href="registration.html">Registration</a></li>
+<li><a href="submission-guidelines.html">Guidelines</a></li>
+<li><a href="presentation.html">Presentation</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>© 2026 CCGE-2026. All rights reserved.</p>
+
+<div class="social-icons">
+<a href="#"><i class="fab fa-linkedin"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-facebook"></i></a>
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const menuBtn=document.querySelector(".menu-btn");
+const navLinks=document.querySelector(".nav-links");
+
+menuBtn.addEventListener("click",()=>{
+navLinks.classList.toggle("active");
+});
+
+const copyBtn=document.getElementById("copyBtn");
+
+copyBtn.addEventListener("click",()=>{
+
+const text=`Jaywant Multistate Credit Co-Operative Soc. Ltd
+Account No: 036120100001558
+IFSC: TJSB0000036
+Branch: Market Yard`;
+
+navigator.clipboard.writeText(text);
+
+copyBtn.innerHTML='<i class="fas fa-check"></i> Copied!';
+
+setTimeout(()=>{
+copyBtn.innerHTML='<i class="fas fa-copy"></i> Copy Bank Details';
+},2000);
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

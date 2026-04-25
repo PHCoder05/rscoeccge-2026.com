@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentation | CCGE-2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8b0000;
+            --primary-dark: #660000;
+            --primary-light: #b30000;
+            --secondary: #8b0000;
+            --secondary-dark: #660000;
+            --secondary-light: #b30000;
+            --accent: #D58E58;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray-200: #e9ecef;
+            --gray-300: #dee2e6;
+            --gray-400: #ced4da;
+            --gray-800: #343a40;
+            --black: #000000;
+            --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --box-shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--gray-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        header {
+            background-color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-top {
+            padding: 1rem 0;
+            border-bottom: 2px solid var(--primary);
+            background-color: var(--white);
+        }
+
+        .header-logos {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .logo-group-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-group-link:hover {
+            opacity: 0.9;
+        }
+
+        .header-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-logo.ieee {
+            height: 50px;
+        }
+
+        .conf-title {
+            text-align: center;
+            flex: 1;
+        }
+
+        .conf-title h1 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.4;
+            width: 100%;
+        }
+
+        .header-bottom {
+            background-color: var(--primary);
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            width: 100%;
+        }
+
+        .nav-links li {
+            flex: 1;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: block;
+            padding: 1rem 0.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links li:first-child a {
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        /* Spotlight Marquee */
+        .spotlight {
+            background: var(--white);
+            color: var(--gray-800);
+            padding: 8px 0;
+            margin-top: 160px;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 900;
+        }
+
+        .spotlight-label {
+            color: var(--primary);
+            font-weight: 800;
+            padding-right: 15px;
+            text-transform: uppercase;
+            white-space: nowrap;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 2;
+            background: var(--white);
+            padding-left: 5%;
+        }
+
+        .spotlight-ticker {
+            flex-grow: 1;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: ticker 40s linear infinite;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-100%, 0, 0);
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('image.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0 60px;
+            margin-bottom: 40px;
+            position: relative;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .page-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Content Card Layout */
+        .content-card {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 80px;
+        }
+
+        .content-card h3 {
+            color: var(--primary);
+            margin: 0 0 1.5rem;
+            font-size: 1.8rem;
+            font-weight: 700;
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gray-800);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+            font-size: 1.3rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+            transform: translateX(5px);
+            display: inline-block;
+        }
+
+        .footer-bottom {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .social-icons {
+            margin: 1.2rem 0;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            margin: 0 1rem;
+            font-size: 1.8rem;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background: var(--primary);
+                flex-direction: column;
+                padding-top: 80px;
+                transition: 0.3s;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links li {
+                width: 100%;
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeInNavLinks 0.5s forwards;
+                animation-delay: calc(0.1s * var(--i, 0));
+            }
+
+            @keyframes fadeInNavLinks {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links a {
+                border: none;
+                padding: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .spotlight {
+                margin-top: 110px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-top">
+            <div class="container header-logos">
+                <div class="logo-group">
+                    <a href="index.html" class="logo-group-link"><img src="jspm.png" alt="JSPM Logo"
+                            class="header-logo"></a>
+                </div>
+                <div class="conf-title">
+                    <h1>2<sup>nd</sup> International Conference on Computing, Communication and <br> Green Engineering
+                        (CCGE-2026)</h1>
+                </div>
+                <div class="logo-group">
+                    <img src="rscoe.png" alt="RSOCE Logo" class="header-logo">
+                    <img src="ieeePune.png" alt="IEEE Logo" class="header-logo ieee">
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <nav>
+                    <button class="menu-btn"><i class="fas fa-bars"></i></button>
+                    <ul class="nav-links">
+                        <li style="--i:1"><a href="index.html">Home</a></li>
+                        <li style="--i:2"><a href="index.html#about">About Us</a></li>
+                        <li style="--i:3"><a href="index.html#scope">Scope</a></li>
+                        <li style="--i:4"><a href="committee.html">Committee</a></li>
+                        <li style="--i:5"><a href="registration.html">Registration</a></li>
+                        <li style="--i:6"><a href="sponsorship.html">Sponsorship</a></li>
+                        <li style="--i:7"><a href="index.html#publication">Publication</a></li>
+                        <li style="--i:8"><a href="submission-guidelines.html">Guidelines</a></li>
+                        <li style="--i:9"><a href="index.html#dates">Dates</a></li>
+                        <li style="--i:10"><a href="index.html#venue">Venue</a></li>
+                        <li style="--i:11"><a href="presentation.html" class="active">Presentation</a></li>
+                        <li style="--i:12"><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="spotlight">
+        <div class="spotlight-label">Spotlight:</div>
+        <div class="spotlight-ticker">
+            <div class="ticker-content">
+                Hard Deadline for Paper Submission: 28th February 2026! |
+                Conference Record No: 67142 |
+                Technically Co-sponsored by IEEE Pune Section |
+                All accepted papers will be submitted to IEEE Xplore.
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <div class="container">
+            <h1 class="page-title">Presentation</h1>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="content-card reveal" style="margin-bottom: 40px; width: 100%; max-width: none;">
+            <h3>Presentation Guidelines & Resources</h3>
+            <div class="presentation-section" style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-200);">
+                <h4 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fas fa-file-powerpoint" style="margin-right: 8px;"></i> 1. Presentation Template</h4>
+                <p style="margin-bottom: 1rem;">The official presentation template for CCGE-2026 is available for download. All presenters are requested to use this template for their presentations.</p>
+                <a href="public/PPT Format.pptx" class="btn" download><i class="fas fa-download" style="margin-right: 8px;"></i> Download Template</a>
+            </div>
+
+            <div class="presentation-section" style="margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-200);">
+                <h4 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fas fa-tasks" style="margin-right: 8px;"></i> 2. Evaluation Rubrics</h4>
+                <p style="margin-bottom: 1rem;">Presentations will be evaluated based on the official rubrics. Detailed criteria for judging the presentations will be available here.</p>
+                <a href="public/Evaluation Sheet.xlsx.pdf" class="btn" download><i class="fas fa-download" style="margin-right: 8px;"></i> Download Rubrics</a>
+            </div>
+
+            <div class="presentation-section" style="margin-bottom: 1rem;">
+                <h4 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 3. Presentation Schedule</h4>
+                <div class="policy-alert" style="background-color: #e9ecef; border-left: 5px solid var(--accent); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
+                    <p style="margin: 0; font-size: 1.1rem; color: var(--gray-800);"><strong>Notice:</strong> Presentation Schedule will be published shortly.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contact" class="reveal">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>Email: ccge-2026@jspmrscoe.edu.in</li>
+                        <li>Website: <a href="https://www.rscoeccge-2026.com/" target="_blank"
+                                style="color: #ddd;">www.rscoeccge-2026.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#scope">Scope</a></li>
+                        <li><a href="index.html#publication">Publication</a></li>
+                        <li><a href="submission-guidelines.html">Guidelines</a></li>
+                        <li><a href="index.html#dates">Important Dates</a></li>
+                        <li><a href="index.html#venue">Venue</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="index.html#scope">Call for Papers</a></li>
+                        <li><a href="registration.html">Registration</a></li>
+                        <li><a href="committee.html">Committee</a></li>
+                        <li><a href="presentation.html">Presentation</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="submission-guidelines.html">Author Guidelines</a></li>
+                        <li><a href="sponsorship.html">Sponsorship</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="social-icons">
+                    <a href="https://www.linkedin.com/school/jspm-s-rajarshi-shahu-college-of-engineering/about/"
+                        target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/jspmrscoe_official?igsh=NXVodHpka3Bwanpq" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p>&copy; 2026 CCGE-2026. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuBtn = document.querySelector('.menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (menuBtn) {
+                menuBtn.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    menuBtn.innerHTML = navLinks.classList.contains('active') ?
+                        '<i class="fas fa-times"></i>' :
+                        '<i class="fas fa-bars"></i>';
+                });
+            }
+
+            const navItems = document.querySelectorAll('.nav-links a');
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    if (menuBtn) menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+
+            function reveal() {
+                const reveals = document.querySelectorAll('.reveal');
+                reveals.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('active');
+                    }
+                });
+            }
+            window.addEventListener('scroll', reveal);
+            reveal();
+        });
+    </script>
+</body>
+
+</html>
