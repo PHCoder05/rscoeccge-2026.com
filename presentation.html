@@ -497,6 +497,7 @@
         <div class="spotlight-label">Spotlight:</div>
         <div class="spotlight-ticker">
             <div class="ticker-content">
+                Presentation Schedule is now Available! |
                 Hard Deadline for Paper Submission: 28th February 2026! |
                 Conference Record No: 67142 |
                 Technically Co-sponsored by IEEE Pune Section |
@@ -527,9 +528,98 @@
             </div>
 
             <div class="presentation-section" style="margin-bottom: 1rem;">
-                <h4 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.8rem;"><i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 3. Presentation Schedule</h4>
-                <div class="policy-alert" style="background-color: #e9ecef; border-left: 5px solid var(--accent); padding: 1.5rem; border-radius: 8px; margin-top: 1rem;">
-                    <p style="margin: 0; font-size: 1.1rem; color: var(--gray-800);"><strong>Notice:</strong> Presentation Schedule will be published shortly.</p>
+                <h4 style="color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 1.5rem;"><i class="fas fa-calendar-alt" style="margin-right: 8px;"></i> 3. Presentation Schedule</h4>
+                
+                <style>
+                    .schedule-grid {
+                        display: grid;
+                        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                        gap: 1.5rem;
+                        margin-top: 1rem;
+                    }
+                    .schedule-card {
+                        background: var(--white);
+                        border: 1px solid var(--gray-200);
+                        border-radius: 12px;
+                        padding: 1.5rem;
+                        display: flex;
+                        flex-direction: column;
+                        transition: all 0.3s ease;
+                        position: relative;
+                        overflow: hidden;
+                    }
+                    .schedule-card:hover {
+                        transform: translateY(-5px);
+                        box-shadow: 0 8px 25px rgba(139, 0, 0, 0.1);
+                        border-color: var(--primary-light);
+                    }
+                    .schedule-card::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 4px;
+                        height: 100%;
+                        background: var(--primary);
+                    }
+                    .schedule-card h5 {
+                        color: var(--primary);
+                        font-size: 1.1rem;
+                        margin-bottom: 1rem;
+                        font-weight: 600;
+                    }
+                    .schedule-card .track-info {
+                        font-size: 0.9rem;
+                        color: var(--gray-800);
+                        margin-bottom: 1.5rem;
+                        flex-grow: 1;
+                    }
+                    .schedule-card .btn-sm {
+                        padding: 0.6rem 1.2rem;
+                        font-size: 0.85rem;
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 8px;
+                    }
+                </style>
+
+                <div class="schedule-grid">
+                    <!-- Track 1 -->
+                    <div class="schedule-card">
+                        <h5>Track 1: AI & ML</h5>
+                        <div class="track-info">Artificial Intelligence and Machine Learning (Online Session)</div>
+                        <a href="public/schedules/Track 1- AI-ML-Shedule-Online - CCGE 2026-.pdf" class="btn btn-sm" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Schedule
+                        </a>
+                    </div>
+
+                    <!-- Track 5 -->
+                    <div class="schedule-card">
+                        <h5>Track 5: SCEES</h5>
+                        <div class="track-info">Smart Computing, Energy and Electronic Systems</div>
+                        <a href="public/schedules/Track 5-SCEES _Schedule- CCGE 2026_2.pdf" class="btn btn-sm" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Schedule
+                        </a>
+                    </div>
+
+                    <!-- Track 6 -->
+                    <div class="schedule-card">
+                        <h5>Track 6: EIET</h5>
+                        <div class="track-info">Emerging Innovations in Engineering and Technology (Online Session)</div>
+                        <a href="public/schedules/Track 6- EIET-Schedule- Online  CCGE 2026.pdf" class="btn btn-sm" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Schedule
+                        </a>
+                    </div>
+
+                    <!-- Track 7 -->
+                    <div class="schedule-card">
+                        <h5>Track 7: Others</h5>
+                        <div class="track-info">Interdisciplinary Research and Other Related Fields</div>
+                        <a href="public/schedules/Track 7- Others-Schedule- CCGE 2026.pdf" class="btn btn-sm" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Schedule
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
